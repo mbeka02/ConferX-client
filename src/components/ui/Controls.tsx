@@ -1,4 +1,8 @@
-const Controls = () => {
+type Props = {
+  handleOpen: () => void;
+};
+
+const Controls = ({ handleOpen }: Props) => {
   return (
     <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
       <div role="search" className="  flex h-9 w-80 gap-2  items-center">
@@ -23,7 +27,10 @@ const Controls = () => {
         </button>
       </div>
 
-      <div className="flex  cursor-pointer  gap-2 rounded-md  py-2 items-center bg-green-custom font-semibold justify-items-center px-2 h-9 w-36 text-white">
+      <div
+        className="flex  cursor-pointer  gap-2 rounded-md  py-2 items-center bg-green-custom font-semibold justify-items-center px-2 h-9 w-36 text-white"
+        onClick={handleOpen}
+      >
         <svg
           width="20"
           height="20"
