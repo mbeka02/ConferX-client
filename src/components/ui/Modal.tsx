@@ -34,7 +34,7 @@ const Modal = ({ children, handleClose }: Props) => {
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="  m-auto grid h-3/4 w-4/5  rounded bg-white  p-4 lg:h-xxl   lg:w-1/2"
+        className="  m-auto grid h-3/4 w-4/5  rounded bg-white  p-6 lg:h-xxl   lg:w-1/2"
       >
         <button
           className="absolute right-4 top-1 h-4 w-4 items-center"

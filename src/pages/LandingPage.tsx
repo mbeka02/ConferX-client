@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
   const { isSignedIn } = useUser();
   const navigate = useNavigate();
+  //bugged
   if (isSignedIn) {
     navigate("/home");
   }

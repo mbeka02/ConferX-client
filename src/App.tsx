@@ -1,5 +1,6 @@
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
+import Room from "./pages/Room";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 import {
@@ -16,7 +17,7 @@ if (!import.meta.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY) {
 }
 
 const clerkPubKey = import.meta.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY;
-
+//re-factor
 function App() {
   const navigate = useNavigate();
   return (
@@ -30,12 +31,26 @@ function App() {
           }
         />
         <Route path="/sign-up" element={<SignUp />} />
+
         <Route
           path="/home"
           element={
             <>
               <SignedIn>
                 <Home />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
+            </>
+          }
+        />
+        <Route
+          path="/room"
+          element={
+            <>
+              <SignedIn>
+                <Room />
               </SignedIn>
               <SignedOut>
                 <RedirectToSignIn />
