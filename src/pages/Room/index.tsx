@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { socket } from "../../services/socket";
 
 const Room = () => {
@@ -7,17 +7,16 @@ const Room = () => {
   const peerRef = useRef<any>();
   const myVideo = useRef<HTMLVideoElement>(null);
   const otherVideo = useRef<HTMLVideoElement>(null);
-  // const mediaStream = useRef<MediaStream>();
+
   const mediaStream = useRef<MediaStream>();
-  const otherUser = useRef();
-  const socketRef = useRef();
+
   const sessionId = "test_room";
-  const Senders = useRef<(RTCRtpSender | undefined | MediaStream)[]>([]);
+  //const Senders = useRef<(RTCRtpSender | undefined | MediaStream)[]>([]);
   useEffect(() => {
     const startDevices = async () => {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
-        audio: true,
+        //audio: true,
       });
 
       if (myVideo.current) {
@@ -41,13 +40,17 @@ const Room = () => {
     const configuration = {
       iceServers: [
         {
-          urls: "stun:global.stun.twilio.com:3478",
+          urls: "stun:stun.relay.metered.ca:80",
         },
         {
-          username:
-            "0c966af170eff3db5eea40d4caaf7006759a96edb6a7aafd7a8435b939bdfb9a",
-          urls: "turn:global.turn.twilio.com:3478?transport=udp",
-          credential: "ohrFzf7UJKxfmEpwo3Yu89ZMw4r0L1A7BrWg30EmfFc=",
+          urls: "turn:a.relay.metered.ca:80",
+          username: "3bfad118bd91583d3826d37b",
+          credential: "slfgGm3AV7fm80Ki",
+        },
+        {
+          urls: "turn:a.relay.metered.ca:80?transport=tcp",
+          username: "3bfad118bd91583d3826d37b",
+          credential: "slfgGm3AV7fm80Ki",
         },
       ],
     };
@@ -88,9 +91,8 @@ const Room = () => {
   //change any type
   const handleReceiveCall = async (incoming: any) => {
     peerRef.current = createPeer();
-    //*payload.sdp , make sure its the offer
+
     const description = new RTCSessionDescription(incoming.sdp);
-    console.log(incoming);
 
     //set session description for the remote peer
     peerRef.current.setRemoteDescription(description);
