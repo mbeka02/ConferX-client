@@ -1,9 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 
 enum roomEnum {
-  "Open",
-  "Social",
-  "Closed",
+  "Public",
+
+  "Private",
 }
 type Inputs = {
   topic: string;
@@ -49,9 +49,8 @@ const RoomForm = () => {
             errors.topic ? "border-red-custom" : "border-grey-custom"
           } w-full rounded-md border-2 h-12  border-solid focus:outline-blue-custom px-2 text-xl`}
         >
-          <option value="Open">Open</option>
-          <option value="Social">Social</option>
-          <option value="Closed">Closed</option>
+          <option value="Public">Open</option>
+          <option value="Private">Social</option>
         </select>
         {errors.roomType && (
           <span className=" text-red-custom text-sm font-semibold">
