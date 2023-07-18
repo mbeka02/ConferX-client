@@ -26,7 +26,9 @@ const Home = () => {
       </div>
       <AnimatePresence mode="wait">
         {modalOpen && (
-          <Modal children={<RoomForm />} handleClose={handleClose} />
+          <Modal handleClose={handleClose}>
+            <RoomForm />
+          </Modal>
         )}
       </AnimatePresence>
     </div>
