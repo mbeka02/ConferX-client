@@ -33,7 +33,7 @@ const Room = () => {
   const [peers, setPeers] = useState<SimplePeer.Instance[]>([]);
   const UserVideo = useRef<HTMLVideoElement>(null);
 
-  const mediaStream = useRef<MediaStream>();
+  //const mediaStream = useRef<MediaStream>();
 
   const sessionId = "test_room";
   // const Senders = useRef<any>([]);
@@ -88,7 +88,7 @@ const Room = () => {
     stream: MediaStream
   ) => {
     //placeholder config
-    const configuration = {
+    /* const configuration = {
       iceServers: [
         {
           urls: "stun:stun.relay.metered.ca:80",
@@ -104,7 +104,7 @@ const Room = () => {
           credential: "slfgGm3AV7fm80Ki",
         },
       ],
-    };
+    };*/
     const peer = new SimplePeer({
       initiator: true,
       trickle: false,
@@ -196,15 +196,15 @@ const Room = () => {
     peerRef.current.addIceCandidate(candidate);
   };*/
 
-  const toggleVideo = () => {
+  /*const toggleVideo = () => {
     const tracks = mediaStream.current
       ?.getTracks()
       .find((track) => track.kind === "video");
     if (tracks) {
       tracks.enabled ? (tracks.enabled = false) : (tracks.enabled = true);
     }
-  };
-  const toggleMic = () => {
+  };*/
+  /*const toggleMic = () => {
     const tracks = mediaStream.current
       ?.getTracks()
       .find((track) => track.kind === "audio");
@@ -212,7 +212,7 @@ const Room = () => {
     if (tracks) {
       tracks.enabled ? (tracks.enabled = false) : (tracks.enabled = true);
     }
-  };
+  };*/
   //fix cursor issue
   /* const screenShare = async () => {
     const options = {
